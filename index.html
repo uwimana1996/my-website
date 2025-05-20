@@ -3,52 +3,47 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Fancy Animated Website</title>
+  <title>Kevin Web Designer | Portfolio</title>
   <link rel="stylesheet" href="styles.css" />
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet" />
+  <meta name="description" content="Kevin is a creative web designer offering custom websites, SEO, and content solutions." />
+  <meta name="keywords" content="web design, Kevin, portfolio, responsive, SEO, developer" />
+  <meta name="author" content="Kevin" />
+  <meta property="og:title" content="Kevin Web Designer" />
+  <meta property="og:description" content="Stunning custom websites for your business or brand." />
+  <meta property="og:image" content="https://kevinwebdesigner.com/assets/preview.jpg" />
+  <meta property="og:url" content="https://www.kevinwebdesigner.com" />
+  <meta name="twitter:card" content="summary_large_image" />
 </head>
 <body>
   <header class="header">
     <div class="container">
-      <h1 class="logo">MySite</h1>
+      <img src="logo.png" alt="Kevin Logo" class="logo" />
       <nav class="nav">
         <a href="#home">Home</a>
         <a href="#about">About</a>
+        <a href="#services">Services</a>
         <a href="#contact">Contact</a>
+        <a href="/projects.html">Projects</a>
+        <a href="/blog.html">Blog</a>
       </nav>
     </div>
-
   </header>
+
   <section id="home" class="hero">
     <div class="slider">
-
-          <img src="graduation.jpg" class="slide">
-<img src="images-1.jpg" class="slide">
-<img src="images-2.jpg" class="slide">
-<img src="images-3.jpg" class="slide">
-<img src="images.jpg" class="slide">
+      <img src="graduation.jpg" class="slide fade">
+      <img src="images-1.jpg" class="slide fade">
+      <img src="images-2.jpg" class="slide fade">
+      <img src="images-3.jpg" class="slide fade">
+      <img src="images.jpg" class="slide fade">
     </div>
   </section>
 
   <section id="about" class="section">
     <div class="container">
-      <h2>About Us</h2>
-      <p>Looking to stand out online? Get a stunning, professional website designed just for you! Whether you 
-        need a sleek business site, an eye-catching portfolio, or a dynamic online store, I deliver fast, creative, 
-        and responsive designs tailored to your brand. Boost your presence, attract more clients, and grow your 
-        business today—contact me now to start your custom website journey!</p>
-    </div>
-  </section>
-
-  <section id="contact" class="section">
-    <div class="container">
-      <h2>Contact Us</h2>
-      <form action="https://formspree.io/f/xqaqnnwn" method="POST">
-        <input type="text" name="name" placeholder="Your Name" required />
-        <input type="email" name="email" placeholder="Your Email" required />
-        <textarea name="message" placeholder="Your Message" required></textarea>
-        <button type="submit">Send Message</button>
-      </form>
+      <h2>About Me</h2>
+      <p>I am Kevin, a passionate web designer crafting modern and mobile-friendly websites. I specialize in custom solutions that help clients grow their business and online presence.</p>
     </div>
   </section>
 
@@ -58,27 +53,73 @@
       <div class="services-grid">
         <div class="service-card">
           <h3>Web Design</h3>
-          <p>We craft responsive and visually appealing websites tailored to your brand.</p>
+          <p>Responsive and visually appealing websites tailored to your brand.</p>
         </div>
         <div class="service-card">
           <h3>SEO Optimization</h3>
-          <p>Improve your website's visibility on search engines and attract more traffic.</p>
+          <p>Boost your website's visibility on search engines.</p>
         </div>
         <div class="service-card">
           <h3>Content Creation</h3>
-          <p>We create engaging content that resonates with your audience and drives results.</p>
+          <p>Engaging copy that resonates with your audience.</p>
         </div>
       </div>
     </div>
   </section>
-  
+
+  <section id="contact" class="section">
+    <div class="container">
+      <h2>Contact Us</h2>
+      <form id="contactForm" action="https://formspree.io/f/xqaqnnwn" method="POST">
+        <input type="text" id="name" name="name" placeholder="Your Name" required />
+        <input type="email" name="email" placeholder="Your Email" required />
+        <textarea name="message" placeholder="Your Message" required></textarea>
+        <button type="submit">Send Message</button>
+        <p>id="successMsg" style="display:none; color: green;">Thanks for reaching out!</p>
+      </form>
+    </div>
+  </section>
 
   <footer class="footer">
     <div class="container">
-      <p>&copy; 2025 MySite. All rights reserved.</p>
+      <p>&copy; 2025 Kevin Web Designer. All rights reserved.</p>
     </div>
   </footer>
 
-  <script src="script.js"></script>
+  <script>
+    // Smooth scroll
+    document.querySelectorAll('.nav a').forEach(link => {
+      link.addEventListener('click', function(e) {
+        if (this.getAttribute('href').startsWith('#')) {
+          e.preventDefault();
+          document.querySelector(this.getAttribute('href')).scrollIntoView({ behavior: 'smooth' });
+        }
+      });
+    });
+
+    // Auto slider
+    const slides = document.querySelectorAll('.slide');
+    let current = 0;
+    function showSlide(index) {
+      slides.forEach((slide, i) => {
+        slide.style.display = i === index ? 'block' : 'none';
+      });
+    }
+    function nextSlide() {
+      current = (current + 1) % slides.length;
+      showSlide(current);
+    }
+    showSlide(current);
+    setInterval(nextSlide, 3000);
+
+    // Contact form success message
+    const form = document.getElementById('contactForm');
+    form.addEventListener('submit', function(e) {
+      e.preventDefault();
+      const successMsg = document.getElementById('successMsg');
+      successMsg.style.display = 'block';
+      form.reset();
+    });
+  </script>
 </body>
 </html>
