@@ -11,7 +11,7 @@
   }
   
   .header {
-    background-color: #222;
+    background-color: #110b0b;
     color: #fff;
     padding: 20px 0;
     position: sticky;
@@ -21,7 +21,7 @@
   
   .container {
     width: 90%;
-    max-width: 1200px;
+    max-width: 1600px;
     margin: auto;
   }
   
@@ -29,6 +29,11 @@
     font-size: 24px;
     font-weight: 700;
   }
+  .logo {
+    height: 70px;
+    width: auto;
+  }
+  
   
   .nav {
     float: right;
@@ -137,5 +142,39 @@
       padding: 1em;
     }
   }
+  .menu-toggle {
+    display: none;
+    font-size: 28px;
+    background: none;
+    border: none;
+    color: white;
+    cursor: pointer;
+  }
+  
+  @media (max-width: 768px) {
+    .menu-toggle {
+      display: block;
+    }
+  
+    .nav {
+      display: none;
+      flex-direction: column;
+      background-color: #222;
+      width: 100%;
+      position: absolute;
+      top: 70px;
+      left: 0;
+      padding: 1em;
+    }
+  
+    .nav a {
+      margin: 10px 0;
+    }
+  
+    .nav.show {
+      display: flex;
+    }
+  }
+  
   
   
